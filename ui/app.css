@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap');
+
+:root {
+    --bg: #0C0D12;
+    --surface: #151820;
+    --surface-2: #1C1F2A;
+    --surface-3: #242836;
+    --text: #F5F9FC;
+    --muted: rgba(245, 249, 252, 0.7);
+    --dim: rgba(245, 249, 252, 0.5);
+    --faint: rgba(245, 249, 252, 0.3);
+    --border: rgba(255, 255, 255, 0.06);
+    --border-active: rgba(75, 137, 219, 0.35);
+    --primary: #4B89DB;
+    --primary-trans: rgba(75, 137, 219, 0.15);
+    --primary-strong: rgba(75, 137, 219, 0.25);
+    --accent-green: #57EFAF;
+    --accent-green-trans: rgba(87, 239, 175, 0.18);
+    --danger: #FF657A;
+    --danger-trans: rgba(255, 101, 122, 0.12);
+    --warn: #F5A623;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --radius: 8px;
+    --radius-sm: 6px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    overflow: hidden;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---- Header ---- */
+.app-header {
+    position: relative;
+    flex-shrink: 0;
+    padding: 16px 16px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.app-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* ---- Body ---- */
+.app-body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 14px 16px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.app-body::-webkit-scrollbar { width: 2px; }
+.app-body::-webkit-scrollbar-thumb { background: var(--primary-trans); border-radius: 3px; }
+
+/* ---- Card ---- */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+}
+
+.card-label {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--faint);
+    margin-bottom: 11px;
+}
+
+.info {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.info.dim {
+    color: var(--dim);
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+/* ---- Loading ---- */
+.loading {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 40px 20px;
+    min-height: 220px;
+}
+
+.loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.85s linear infinite;
+}
+
+.loading-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dim);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ---- Empty state ---- */
+.empty-state {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.empty-icon {
+    width: 66px;
+    height: 66px;
+    border-radius: 18px;
+    background: var(--primary-trans);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-icon .material-icons-outlined {
+    font-size: 38px;
+    color: var(--primary);
+}
+
+.empty-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.empty-text {
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+/* ---- Group info ---- */
+.leader-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.leader-badge {
+    color: var(--warn);
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.leader-text { min-width: 0; flex: 1; }
+
+.activity {
+    margin-top: 12px;
+    padding: 9px 11px;
+    background: var(--primary-trans);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.activity .material-icons-outlined { font-size: 16px; }
+
+/* ---- Members list ---- */
+.members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.member-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 9px 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.member-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--surface-3);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
+    flex-shrink: 0;
+}
+
+.member-avatar.is-leader {
+    border-color: var(--warn);
+    color: var(--warn);
+}
+
+.member-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.member-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.member-role {
+    font-size: 11px;
+    color: var(--dim);
+    margin-top: 1px;
+}
+
+.member-status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dim);
+    flex-shrink: 0;
+}
+
+.member-status.online { background: var(--accent-green); box-shadow: 0 0 6px rgba(87, 239, 175, 0.6); }
+.member-status.offline { background: var(--warn); }
+
+.member-kick {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 120ms ease;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.member-kick:hover {
+    border-color: rgba(255, 101, 122, 0.4);
+    background: var(--danger-trans);
+    color: var(--danger);
+}
+
+.member-kick .material-icons-outlined { font-size: 16px; }
+
+/* ---- Buttons ---- */
+.btn {
+    background: var(--surface-3);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 14px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 120ms ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    border-color: var(--border-active);
+    background: var(--primary-trans);
+    color: var(--primary);
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn.full { width: 100%; }
+
+.btn.primary {
+    background: var(--primary-trans);
+    color: var(--primary);
+    border-color: var(--border-active);
+}
+
+.btn.primary:hover {
+    background: var(--primary-strong);
+    color: var(--text);
+}
+
+.btn.active {
+    background: var(--accent-green-trans);
+    color: var(--accent-green);
+    border-color: rgba(87, 239, 175, 0.35);
+}
+
+.btn.active:hover {
+    background: rgba(87, 239, 175, 0.28);
+}
+
+.btn.ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--danger);
+}
+
+.btn.ghost:hover {
+    background: var(--danger-trans);
+    border-color: rgba(255, 101, 122, 0.35);
+    color: var(--danger);
+}
+
+.btn .material-icons-outlined { font-size: 18px; }
+
+.invite-hint {
+    margin-top: 10px;
+    padding: 9px 11px;
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    color: var(--dim);
+    line-height: 1.5;
+}
+
+/* The group view wraps the cards + leave button - give it the same vertical
+   rhythm as .app-body so the children breathe. */
+#group-view {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}

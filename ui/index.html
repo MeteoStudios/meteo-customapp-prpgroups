@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groups</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="app">
+        <header class="app-header">
+            <h1 class="app-title">Groups</h1>
+        </header>
+
+        <main class="app-body">
+            <!-- Loading -->
+            <div id="loading" class="loading">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Loading...</div>
+            </div>
+
+            <!-- Empty state - not in a group -->
+            <div id="empty-state" class="empty-state" style="display:none">
+                <div class="empty-icon">
+                    <span class="material-icons-outlined">groups</span>
+                </div>
+                <div class="empty-title">No group yet</div>
+                <div class="empty-text">Create a group to invite players and run activities together.</div>
+                <button id="btn-create" class="btn primary full">
+                    <span class="material-icons-outlined">add</span>
+                    <span>Create Group</span>
+                </button>
+            </div>
+
+            <!-- Group view -->
+            <div id="group-view" style="display:none">
+                <section class="card">
+                    <div class="card-label">Your group</div>
+                    <div class="leader-row">
+                        <span class="material-icons-outlined leader-badge">workspace_premium</span>
+                        <div class="leader-text">
+                            <div class="info" id="leader-info">Leader</div>
+                            <div class="info dim" id="member-count">0 members</div>
+                        </div>
+                    </div>
+                    <div class="activity" id="activity-info" style="display:none">
+                        <span class="material-icons-outlined">play_arrow</span>
+                        <span id="activity-name"></span>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-label">Members</div>
+                    <div class="members-list" id="members-list"></div>
+                </section>
+
+                <section class="card" id="leader-actions" style="display:none">
+                    <div class="card-label">Leader controls</div>
+                    <button id="btn-toggle-invite" class="btn full">
+                        <span class="material-icons-outlined" id="invite-icon">person_add</span>
+                        <span id="invite-label">Open for invites</span>
+                    </button>
+                    <div class="invite-hint" id="invite-hint" style="display:none">
+                        Look at a nearby player and use the target prompt to invite them.
+                    </div>
+                </section>
+
+                <button id="btn-leave" class="btn ghost full">
+                    <span class="material-icons-outlined" id="leave-icon">logout</span>
+                    <span id="leave-label">Leave Group</span>
+                </button>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
